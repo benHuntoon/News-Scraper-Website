@@ -8,19 +8,17 @@ Inside the data base I used the sql shell to start running the database using th
 
 The module dependencies not included are flask, mysql-connector, and time. Ensure each of these is installed in the directory before running app.py.
 
-To run LiveLens I created a venv virtual environment on my server and ran the server using this command: nohup python3 app.py
+To run LiveLens I created a venv virtual environment on my server.
 
 To create a venv on a linux based system, the commands are as follows:
-python3 -m venv venv
-source venv/bin/activate
-pip install Flask
+python3 -m venv venv,
+source venv/bin/activate,
+pip install Flask,
 
 It is important that each html file be place in a directory named template inside of the server. For this current instance style is run out of a project directory on the server, though that is optional, however if that were modified the app.py file would need to be altered as well. The style.css file must be placed in a directory named public for proper functionality. 
-
-The app.py file is the core of the project conencting each branch of the architecture and handling all major processes to be displayed to the user. 
 
 To start the server on local host simply run:
 python3 app.py
 
 To start the server remotely run this:
-nohup python3 app.py > /dev/null 2>&1 &
+nohup python3 app.py
