@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  data-service:
+    build: ./data_service
+    ports:
+      - "3001:3001"
+
+  api_service:
+    build: ./api_service
+    ports:
+      - "3000:3000"
+
+  interface_service:
+    build: ./interface_service
+    ports:
+      - "3002:3002"
+    depends_on:
+      - data_service
+      - api_service
+
