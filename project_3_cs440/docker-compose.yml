@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  data_service:
+    build: ./data_service
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./data_service/project3_db.sql:/docker-entrypoint-initdb.d/project3_db.sql
+
+  api_service:
+    build: ./api_service
+    ports:
+      - "3000:3000"
+    depends_on:
+      - data_service
+
+  interface_service:
+    build: ./interface_service
+    ports:
+      - "3002:3002"
+    depends_on:
+      - data_service
+      - api_service
+    environment:
+      - API_URL = http://api_service:3000
+      - DATA_URL = http://data_service:3001
+
